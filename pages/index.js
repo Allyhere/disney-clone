@@ -1,22 +1,18 @@
-import { GraphQLClient, gql } from "graphql-request";
 import Link from "next/link";
-import { Navbar } from "../components/Navbar";
 import { Section } from "../components/Section";
-import { fetchAccount, fetchVideos } from "../lib/CMSService";
+import { fetchVideos } from "../lib/CMSService";
 
 export const getStaticProps = async () => {
   const { videos } = await fetchVideos();
-  const { account } = await fetchAccount();
 
   return {
     props: {
-      videos,
-      account,
+      videos
     },
   };
 };
 
-const Home = ({ videos, account }) => {
+const Home = ({ videos }) => {
   const randomVideo = videos[Math.floor(Math.random() * videos.length)];
   const filterVideos = (genre) =>
     videos.filter((video) => video.tags.includes(genre));
@@ -24,7 +20,6 @@ const Home = ({ videos, account }) => {
 
   return (
     <>
-      <Navbar account={account} />
       <main className="app">
         <header className="main-video">
           <img src={randomVideo.thumbnail?.url} alt={randomVideo.title} />
