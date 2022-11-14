@@ -1,6 +1,7 @@
 import { Layout } from "../components/Layout";
 import { fetchAccount } from "../lib/CMSService";
 import "../styles/main.scss";
+import '@splidejs/react-splide/css';
 
 const MyApp = ({ Component, pageProps, account }) => {
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Section } from "../components/Section";
+import { Header } from "../components/Header";
 import { fetchVideos } from "../lib/CMSService";
 
 export const getStaticProps = async () => {
@@ -13,7 +14,6 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ videos }) => {
-  const randomVideo = videos[Math.floor(Math.random() * videos.length)];
   const filterVideos = (genre) =>
     videos.filter((video) => video.tags.includes(genre));
   const unseenVideos = videos.filter((video) => !video.seen);
@@ -21,9 +21,7 @@ const Home = ({ videos }) => {
   return (
     <>
       <main className="app">
-        <header className="main-video">
-          <img src={randomVideo.thumbnail?.url} alt={randomVideo.title} />
-        </header>
+        <Header videos={videos}/>
         <section className="video-feed">
           <div className="featured">
             <Link href="#disney" className="featured__franchise">
