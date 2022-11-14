@@ -1,9 +1,9 @@
 .header {
-  height: clamp(25vh, 100%, 500px);
   width: 100%;
   &__slide {
     height: 400px;
     position: relative;
+    @media (max-width: 940px) { height: 250px; }
   }
   &__slide {
     border-radius: 4px;
