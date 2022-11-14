@@ -1,37 +1,10 @@
-import { GraphQLClient, gql } from "graphql-request";
 import Link from "next/link";
 import { useState } from "react";
+import { fetchVideoBySlug } from "../../lib/CMSService";
 
 export const getServerSideProps = async (pageContext) => {
-    const { ENDPOINT, GRAPH_CMS_TOKEN } = process.env
-    const graphQLClient = new GraphQLClient(ENDPOINT, {
-        headers: {
-            "Authorizaton": GRAPH_CMS_TOKEN
-        }
-    })
-
-    const pageSlug = pageContext.query.slug;
-    const query = gql`
-     query ($pageSlug: String!) {
-        video(where: {slug: $pageSlug}) {
-          createdAt
-          id
-          title
-          description
-          seen
-          slug
-          tags
-          thumbnail {
-            url
-          }
-          mp4 {
-            url
-          }
-        }
-      }      
-    `
-    const variables = { pageSlug };
-    const { video } = await graphQLClient.request(query, variables)
+    const variables = { pageSlug: pageContext.query.slug };
+    const { video } = await fetchVideoBySlug(variables)
 
     return {
         props: {

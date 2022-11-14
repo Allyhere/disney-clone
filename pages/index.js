@@ -2,72 +2,32 @@ import { GraphQLClient, gql } from "graphql-request";
 import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import { Section } from "../components/Section";
+import { fetchAccount, fetchVideos } from "../lib/CMSService";
 
 export const getStaticProps = async () => {
-
-  const { ENDPOINT, GRAPH_CMS_TOKEN } = process.env
-
-  const graphQLClient = new GraphQLClient(ENDPOINT, {
-    headers: {
-      "Authorizaton": GRAPH_CMS_TOKEN
-    }
-  })
-
-  const videoQuery = gql`
-    query {
-      videos {
-        createdAt,
-        id,
-        title,
-        description,
-        seen,
-        slug,
-        tags,
-        thumbnail {
-          url
-        },
-        mp4{
-          url
-        }
-      }
-    }
-  `;
-
-  const accountQuery = gql`
-    query {
-      account(where: { id: "cla1peqgy102p0blyfrk07bfa" }) {
-        username,
-        avatar { url }
-      }
-    }
-  `;
-
-  const { videos } = await graphQLClient.request(videoQuery)
-  const { account } = await graphQLClient.request(accountQuery)
+  const { videos } = await fetchVideos();
+  const { account } = await fetchAccount();
 
   return {
     props: {
       videos,
-      account
-    }
-  }
-}
-
+      account,
+    },
+  };
+};
 
 const Home = ({ videos, account }) => {
   const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-  const filterVideos = (genre) => videos.filter(video => video.tags.includes(genre));
-  const unseenVideos = videos.filter(video => !video.seen)
+  const filterVideos = (genre) =>
+    videos.filter((video) => video.tags.includes(genre));
+  const unseenVideos = videos.filter((video) => !video.seen);
 
   return (
     <>
       <Navbar account={account} />
       <main className="app">
         <header className="main-video">
-          <img
-            src={randomVideo.thumbnail?.url}
-            alt={randomVideo.title}
-          />
+          <img src={randomVideo.thumbnail?.url} alt={randomVideo.title} />
         </header>
         <section className="video-feed">
           <div className="featured">
@@ -92,7 +52,7 @@ const Home = ({ videos, account }) => {
         </section>
       </main>
     </>
-  )
-}
+  );
+};
 
 export default Home;
