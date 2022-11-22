@@ -16,7 +16,13 @@ export const Navbar = ({ account }) => {
             </Link>
             <div className="navbar__account">
                 <p>Welcome {account.username}</p>
-                <img className="navbar__avatar" src={account.avatar.url} alt={account.username} />
+                <Image
+                    alt={account.username}
+                    className="navbar__avatar"
+                    height={50}
+                    width={50}
+                    src={account.avatar.url}
+                />
             </div>
         </nav>
     )
