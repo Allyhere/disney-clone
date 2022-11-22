@@ -1,29 +1,77 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../public/disneyplus.png"
+import {
+  House,
+  MagnifyingGlass,
+  Plus,
+  Star,
+  FilmStrip,
+  TelevisionSimple,
+} from "phosphor-react";
+import logo from "../public/disneyplus.png";
 
 export const Navbar = ({ account }) => {
-    return (
-        <nav className="navbar">
-            <Link href={"/"}>
-                <Image
-                    src={logo}
-                    alt="Disney Logo"
-                    width={120}
-                    height={80}
-                    priority={false}
-                />
-            </Link>
-            <div className="navbar__account">
-                <p>Welcome {account.username}</p>
-                <Image
-                    alt={account.username}
-                    className="navbar__avatar"
-                    height={50}
-                    width={50}
-                    src={account.avatar.url}
-                />
-            </div>
-        </nav>
-    )
-}
+  return (
+    <nav className="navbar">
+      <Link href={"/"}>
+        <Image
+          src={logo}
+          alt="Disney Logo"
+          width={80}
+          height={60}
+          priority={false}
+        />
+      </Link>
+      <ul className="navbar__menu">
+        <li className="navbar__menu-item">
+          <Link className="navbar__menu-link" href="#">
+            <House size={12} weight="fill" />
+            <span>INÍCIO</span>
+          </Link>
+        </li>
+        <li className="navbar__menu-item">
+          <Link className="navbar__menu-link" href="#">
+            <MagnifyingGlass size={12} weight="bold" />
+            <span>PESQUISA</span>
+          </Link>
+        </li>
+        <li className="navbar__menu-item">
+          <Link className="navbar__menu-link" href="#">
+            <Plus size={12} weight="bold" />
+            <span>MINHA LISTA</span>
+          </Link>
+        </li>
+        <li className="navbar__menu-item">
+          <Link className="navbar__menu-link" href="#">
+            <Star size={12} weight="fill" />
+            <span>ORIGINAIS</span>
+          </Link>
+        </li>
+        <li className="navbar__menu-item">
+          <Link className="navbar__menu-link" href="#">
+            <FilmStrip size={12} weight="fill" />
+           <span>FILMES</span>
+          </Link>
+        </li>
+        <li className="navbar__menu-item">
+          <Link className="navbar__menu-link" href="#">
+            <TelevisionSimple size={12} weight="fill" />
+            <span>SÉRIES</span>
+          </Link>
+        </li>
+      </ul>
+      <div className="navbar__account">
+        <Image
+          alt={account.username}
+          className="navbar__avatar"
+          height={42}
+          width={42}
+          src={account.avatar.url}
+        />
+        <div className="navbar__avatar-menu">
+          <p>Welcome {account.username}</p>
+        </div>
+      </div>
+    </nav>
+  );
+};
