@@ -1,6 +1,13 @@
 @use "base" as *;
 @use "components" as *;
 
+:root {
+  --velocity: 100ms ease-in;
+  @media (prefers-reduced-motion) {
+    --velocity: linear;
+  }
+}
+
 .app {
   margin: 20px;
 }

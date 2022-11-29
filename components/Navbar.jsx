@@ -19,6 +19,7 @@ export const Navbar = ({ account }) => {
           alt="Disney Logo"
           width={80}
           height={60}
+          className="navbar__logo"
           priority={false}
         />
       </Link>
@@ -67,8 +68,9 @@ export const Navbar = ({ account }) => {
           height={42}
           width={42}
           src={account.avatar.url}
+          tabIndex={1}
         />
-        <div className="navbar__avatar-menu">
+        <div className="navbar__account-menu">
           <p>Welcome {account.username}</p>
         </div>
       </div>

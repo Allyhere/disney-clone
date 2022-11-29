@@ -11,3 +11,13 @@
 	width: 1px !important;
 	white-space: nowrap !important;
 }
+
+@mixin isInteraction() {
+	&:is(
+		:hover,
+		:focus,
+		:focus-within
+	) {
+		@content;
+	}
+}
