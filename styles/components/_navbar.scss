@@ -1,0 +1,78 @@
+@use "../base/utilities" as *;
+
+.navbar {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  &__logo { object-fit: contain; }
+  &__menu {
+    display: flex;
+    gap: Min(5vmin, 1.5rem);
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: bold;
+    letter-spacing: 0.15ch;
+    width: 100%;
+    &-item {
+      text-align: center;
+    }
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: 2ch;
+      width: max-content;
+      padding-block: 1.5ch;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 4px;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background-color: white;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--velocity);
+      }
+
+      @include isInteraction() {
+        &::before { transform: scaleX(1); }
+      }
+
+      @media (max-width: 740px) {
+        span { @include sr-only; }
+      }
+    }
+  }
+  &__account {
+    display: grid;
+    grid-template-columns: 160px 42px;
+    gap: 2ch;
+    align-items: center;
+    position: relative;
+    & > * {
+      position: relative;
+      z-index: 1;
+    }
+    @include isInteraction() {
+      & > .navbar__account-menu { display: grid; }
+    }
+
+    &-menu {
+      display: none;
+      grid-area: 1 / 1;
+    }
+  }
+
+  &__avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    grid-area: 1 / 2;
+  }
+}
