@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import {
   House,
   MagnifyingGlass,
@@ -72,3 +73,4 @@ export const Navbar = ({ account }) => {
     </nav>
   );
 };
+
