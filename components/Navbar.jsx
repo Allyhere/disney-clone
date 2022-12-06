@@ -51,7 +51,7 @@ export const Navbar = ({ account }) => {
         <li className="navbar__menu-item">
           <Link className="navbar__menu-link" href="#">
             <FilmStrip size={12} weight="fill" />
-           <span>FILMES</span>
+            <span>FILMES</span>
           </Link>
         </li>
         <li className="navbar__menu-item">
@@ -61,19 +61,14 @@ export const Navbar = ({ account }) => {
           </Link>
         </li>
       </ul>
-      <div className="navbar__account">
-        <Image
-          alt={account.username}
-          className="navbar__avatar"
-          height={42}
-          width={42}
-          src={account.avatar.url}
-          tabIndex={1}
-        />
-        <div className="navbar__account-menu">
-          <p>Welcome {account.username}</p>
-        </div>
-      </div>
+      <Image
+        alt={account.username}
+        className="navbar__avatar"
+        height={42}
+        width={42}
+        src={account.avatar.url}
+        tabIndex={1}
+      />
     </nav>
   );
 };
