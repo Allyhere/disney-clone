@@ -2,34 +2,13 @@
 @use "components" as *;
 
 .app {
-  margin: 20px;
+  display: grid;
+  grid-template-columns: Min(5vmin, 20px) 1fr Min(5vmin, 20px);
+  gap: 3ch;
+  & > * { grid-column: 2; }
 }
 
-.navbar {
-  height: 60px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.navbar__account {
-  display: flex;
-  height: 50%;
-}
-
-.navbar__avatar {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-left: 10px;
-}
-
-.navbar img {
-  object-fit: contain;
-}
+.full-bleed { grid-column: 1 / -1; }
 
 .main-video {
   width: 100vw;

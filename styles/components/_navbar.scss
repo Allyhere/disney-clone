@@ -44,28 +44,9 @@
         &::before { transform: scaleX(1); }
       }
 
-      @media (max-width: 740px) {
+      @media (max-width: 730px) {
         span { @include sr-only; }
       }
-    }
-  }
-  &__account {
-    display: grid;
-    grid-template-columns: 160px 42px;
-    gap: 2ch;
-    align-items: center;
-    position: relative;
-    & > * {
-      position: relative;
-      z-index: 1;
-    }
-    @include isInteraction() {
-      & > .navbar__account-menu { display: grid; }
-    }
-
-    &-menu {
-      display: none;
-      grid-area: 1 / 1;
     }
   }
 

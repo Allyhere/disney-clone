@@ -1,4 +1,5 @@
-import { VideoCard } from "./VideoCard"
+import { VideoCard } from "./VideoCard";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 export const Section = ({ genre, videos }) => {
     return (

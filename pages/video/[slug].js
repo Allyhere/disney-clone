@@ -30,6 +30,7 @@ const Video = ({ video }) => {
     <>
       {!watching && (
         <>
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={video.thumbnail.url}
             alt={video.title}
