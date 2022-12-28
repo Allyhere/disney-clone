@@ -1,0 +1,13 @@
+.genre {
+  width: 100%;
+  display: grid;
+  row-gap: 2ch;
+  overflow-x: hidden;
+  &__arrows {
+    button { background: transparent; }
+    .splide__arrow {
+      &:disabled { opacity: 0; }
+      svg { fill: white; }
+    } 
+  }
+}

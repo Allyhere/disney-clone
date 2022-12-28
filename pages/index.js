@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Section } from "../components/Section";
 import { Header } from "../components/Header";
 import { fetchVideos } from "../lib/CMSService";
+import { Franchise } from "../components/Franchise";
+
 
 export const getStaticProps = async () => {
   const { videos } = await fetchVideos();
@@ -23,20 +25,7 @@ const Home = ({ videos }) => {
       <main className="app">
         <Header videos={videos}/>
         <section className="video-feed">
-          <div className="featured">
-            <Link href="#disney" className="featured__franchise">
-              disney
-            </Link>
-            <Link href="#pixar" className="featured__franchise">
-              pixar
-            </Link>
-            <Link href="#star-wars" className="featured__franchise">
-              star-wars
-            </Link>
-            <Link href="#marvel" className="featured__franchise">
-              marvel
-            </Link>
-          </div>
+          <Franchise.Root />
           <Section genre={"Recommended for you"} videos={unseenVideos} />
           <Section genre={"Family"} videos={filterVideos("family")} />
           <Section genre={"Adventure"} videos={filterVideos("adventure")} />

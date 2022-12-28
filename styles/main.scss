@@ -1,16 +1,15 @@
 @use "base" as *;
 @use "components" as *;
 
-:root {
-  --velocity: 100ms ease-in;
-  @media (prefers-reduced-motion) {
-    --velocity: linear;
-  }
+.app {
+  display: grid;
+  grid-template-columns: Min(5vmin, 20px) 1fr Min(5vmin, 20px);
+  gap: 3ch;
+  padding-bottom: 3ch;
+  & > * { grid-column: 2; }
 }
 
-.app {
-  margin: 20px;
-}
+.full-bleed { grid-column: 1 / -1; }
 
 .main-video {
   width: 100vw;
@@ -18,24 +17,6 @@
   overflow: hidden;
   position: relative;
   margin-bottom: 50px;
-}
-
-.card {
-  display: block;
-  aspect-ratio: 16/8;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.genre-feed {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
-  grid-template-rows: 150px;
-  gap: 1rem;
-}
-
-.genre-feed__card a {
-  width: fit-content;
 }
 
 .video-image {

@@ -27,37 +27,37 @@ export const Navbar = ({ account }) => {
       <ul className="navbar__menu">
         <li className="navbar__menu-item">
           <Link className="navbar__menu-link" href="#">
-            <House size={12} weight="fill" />
+            <House size={18} weight="fill" />
             <span>INÍCIO</span>
           </Link>
         </li>
         <li className="navbar__menu-item">
           <Link className="navbar__menu-link" href="#">
-            <MagnifyingGlass size={12} weight="bold" />
+            <MagnifyingGlass size={18} weight="bold" />
             <span>PESQUISA</span>
           </Link>
         </li>
         <li className="navbar__menu-item">
           <Link className="navbar__menu-link" href="#">
-            <Plus size={12} weight="bold" />
+            <Plus size={18} weight="bold" />
             <span>MINHA LISTA</span>
           </Link>
         </li>
         <li className="navbar__menu-item">
           <Link className="navbar__menu-link" href="#">
-            <Star size={12} weight="fill" />
+            <Star size={18} weight="fill" />
             <span>ORIGINAIS</span>
           </Link>
         </li>
         <li className="navbar__menu-item">
           <Link className="navbar__menu-link" href="#">
-            <FilmStrip size={12} weight="fill" />
+            <FilmStrip size={18} weight="fill" />
             <span>FILMES</span>
           </Link>
         </li>
         <li className="navbar__menu-item">
           <Link className="navbar__menu-link" href="#">
-            <TelevisionSimple size={12} weight="fill" />
+            <TelevisionSimple size={18} weight="fill" />
             <span>SÉRIES</span>
           </Link>
         </li>
@@ -73,4 +73,3 @@ export const Navbar = ({ account }) => {
     </nav>
   );
 };
-

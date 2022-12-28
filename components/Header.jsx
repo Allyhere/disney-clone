@@ -6,7 +6,7 @@ import Link from "next/link";
 export const Header = ({ videos }) => {
   const router = useRouter();
   return (
-    <header className="header">
+    <header className="header full-bleed">
       <Splide
         aria-label="new filmes presentation"
         className="header__slider"

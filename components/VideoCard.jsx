@@ -1,10 +1,12 @@
 export const VideoCard = ({ thumbnail }) => {
     return (
-        <img
-            src={thumbnail.url}
-            alt={thumbnail.title}
-            className="card"
-            height="150"
-        />
+        <div className="video">
+            <img
+                src={thumbnail.url}
+                alt={thumbnail.title}
+                className="video__card"
+                height="150"
+            />
+        </div>
     )
 }
