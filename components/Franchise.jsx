@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
 
@@ -12,18 +11,25 @@ const franchiseList = [
 
 const FranchiseLink = ({ genre, alt }) => {
   const mouseEnter = useCallback(
-    ({ target }) => target.nodeName === "VIDEO" && target.play(),
+    ({ target }) =>
+      target.nodeName === "A" && target.querySelector("video").play(),
     []
   );
 
   const mouseLeave = useCallback(
-    ({ target }) => target.nodeName === "VIDEO" && target.pause(),
+    ({ target }) =>
+      target.nodeName === "A" && target.querySelector("video").pause(),
     []
   );
 
   return (
     <li className="franchise">
-      <Link href={`#${genre}`} className="franchise__link">
+      <Link
+        href={`#${genre}`}
+        className="franchise__link"
+        onMouseEnter={mouseEnter}
+        onMouseLeave={mouseLeave}
+      >
         <video
           className="franchise__video"
           disablePictureInPicture
@@ -31,8 +37,6 @@ const FranchiseLink = ({ genre, alt }) => {
           muted
           preload="metadata"
           width={200}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
         >
           <source src={`/${genre}.mp4`} type="video/mp4" />
         </video>

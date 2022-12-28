@@ -26,17 +26,10 @@
     width: clamp(100px, 100%, 500px);
     cursor: pointer;
     & > * { grid-area: 1 / 1; }
-    &::after {
-      content: "";
-      border: 4px solid hsl(0deg 0% 15% / 20%);;
-      border-radius: 4px;
-      position: absolute;
-      inset: 0px;
-      transition: border 150ms linear 0s;
-    }
-    &:hover::after { border: 4px solid hsl(0deg 0% 98% / 80%); }
-    @include isInteraction() {
-      .franchise__video { opacity: 1; }
+    @include cardHover() {
+      @include isInteraction() {
+        .franchise__video { opacity: 1; }
+      }
     }
   }
   &__video {
